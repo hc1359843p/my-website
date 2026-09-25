@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HARSH KIRANA STORE</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f7f9;
+    color:#17202a;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(135deg,#087f5b,#0b5d46);
+    color:white;
+    padding:35px 20px;
+    text-align:center;
+}
+
+.logo{
+    font-size:34px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.address{
+    margin-top:10px;
+    font-size:15px;
+    line-height:1.6;
+}
+
+.time{
+    margin-top:12px;
+    display:inline-block;
+    background:white;
+    color:#087f5b;
+    padding:8px 15px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+/* MAIN */
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    padding:0 18px;
+}
+
+/* NOTICE */
+.notice{
+    background:#fff;
+    border-left:5px solid #087f5b;
+    padding:16px;
+    border-radius:10px;
+    margin-bottom:25px;
+    box-shadow:0 3px 15px rgba(0,0,0,.06);
+}
+
+/* SEARCH */
+.search-box{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 5px 25px rgba(0,0,0,.07);
+    margin-bottom:25px;
+}
+
+.search-box h2{
+    margin-bottom:15px;
+}
+
+.search{
+    width:100%;
+    padding:17px;
+    border:2px solid #dce3e8;
+    border-radius:12px;
+    font-size:17px;
+    outline:none;
+}
+
+.search:focus{
+    border-color:#087f5b;
+}
+
+/* CATEGORY */
+.categories{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 5px 25px rgba(0,0,0,.07);
+    margin-bottom:25px;
+}
+
+.categories h2{
+    margin-bottom:18px;
+}
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.category{
+    background:#f1f8f5;
+    padding:16px 10px;
+    text-align:center;
+    border-radius:12px;
+    font-weight:bold;
+    font-size:14px;
+}
+
+/* RESULTS */
+.results{
+    margin-top:20px;
+}
+
+.product{
+    background:white;
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 3px 15px rgba(0,0,0,.06);
+}
+
+.product-name{
+    font-size:18px;
+    font-weight:bold;
+}
+
+.price{
+    margin-top:6px;
+    font-size:17px;
+    color:#087f5b;
+    font-weight:bold;
+}
+
+.status{
+    padding:8px 13px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.available{
+    background:#d9fbe8;
+    color:#147a43;
+}
+
+.unavailable{
+    background:#ffe0e0;
+    color:#b42318;
+}
+
+/* LOGIN */
+.login-section{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 5px 25px rgba(0,0,0,.07);
+}
+
+.login-input{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccd5dc;
+    border-radius:9px;
+    margin-top:8px;
+    font-size:15px;
+}
+
+button{
+    border:none;
+    padding:11px 15px;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.login-btn{
+    background:#087f5b;
+    color:white;
+}
+
+.logout{
+    background:#555;
+    color:white;
+}
+
+.admin{
+    display:none;
+}
+
+.admin-search{
+    margin-top:20px;
+}
+
+.admin-item{
+    background:#f8fafb;
+    border:1px solid #e0e6ea;
+    border-radius:12px;
+    padding:17px;
+    margin-top:12px;
+}
+
+.admin-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.stock-btn{
+    background:#087f5b;
+    color:white;
+}
+
+.price-btn{
+    background:#e6edf1;
+}
+
+.delete-btn{
+    background:#d92d20;
+    color:white;
+}
+
+.add-box{
+    background:#f5f8fa;
+    padding:18px;
+    border-radius:12px;
+    margin-top:20px;
+}
+
+.add-input{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    border:1px solid #ccd5dc;
+    border-radius:8px;
+}
+
+.add-btn{
+    background:#087f5b;
+    color:white;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px 15px;
+    color:#68737d;
+    font-size:14px;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+    .logo{
+        font-size:27px;
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .product{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+    }
+
+    .admin-top{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+    <div class="logo">
+        🛒 HARSH KIRANA STORE
+    </div>
+
+    <div class="address">
+        Janv, Kanakpur, Post Surjanagar,<br>
+        District Moradabad, Uttar Pradesh
+    </div>
+
+    <div class="time">
+        🕘 दुकान का समय: 9:00 AM – 6:00 PM
+    </div>
+
+</header>
+
+
+<div class="container">
+
+<!-- NOTICE -->
+<div class="notice">
+
+    <b>ℹ️ वेबसाइट का उद्देश्य</b>
+
+    <p style="margin-top:7px;">
+        घर बैठे पता करें कि दुकान पर कौन-सा सामान उपलब्ध है
+        और उसकी वर्तमान कीमत क्या है।
+        <br>
+        <b>Home Delivery और Online Order उपलब्ध नहीं है।</b>
+    </p>
+
+</div>
+
+
+<!-- CUSTOMER SEARCH -->
+<div class="search-box">
+
+    <h2>🔎 सामान खोजें</h2>
+
+    <input
+        type="text"
+        id="customerSearch"
+        class="search"
+        placeholder="सामान का नाम लिखें... जैसे चावल, मसाला, साबुन"
+    >
+
+    <div id="customerResults" class="results">
+
+        <p style="margin-top:15px;color:#68737d;">
+            किसी सामान का नाम Search करें।
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- CATEGORY -->
+<div class="categories">
+
+    <h2>🛍️ दुकान पर मिलने वाली चीज़ें</h2>
+
+    <div class="category-grid">
+
+        <div class="category">🍚 किराना</div>
+        <div class="category">🌶️ मसाले</div>
+        <div class="category">🧴 Personal Care</div>
+        <div class="category">🧹 Cleaning</div>
+
+        <div class="category">🍪 Biscuits</div>
+        <div class="category">🥤 Drinks</div>
+        <div class="category">✏️ Stationery</div>
+        <div class="category">🧺 Daily Use</div>
+
+    </div>
+
+</div>
+
+
+<!-- SHOPKEEPER LOGIN -->
+<div class="login-section">
+
+    <div id="loginBox">
+
+        <h2>🔐 दुकानदार Login</h2>
+
+        <p style="margin-top:7px;color:#68737d;">
+            सामान की कीमत और उपलब्धता बदलने के लिए Login करें।
+        </p>
+
+        <label style="display:block;margin-top:18px;">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            class="login-input"
+            placeholder="Password डालें"
+        >
+
+        <button class="login-btn" onclick="login()">
+            Login
+        </button>
+
+    </div>
+
+
+    <!-- ADMIN PANEL -->
+    <div id="adminPanel" class="admin">
+
+        <h2>👨‍💼 Shopkeeper Panel</h2>
+
+        <p style="margin-top:7px;color:#68737d;">
+            यहाँ Search करके सामान की स्थिति और कीमत बदलें।
+        </p>
+
+        <button class="logout" onclick="logout()">
+            Logout
+        </button>
+
+
+        <!-- ADD NEW ITEM -->
+        <div class="add-box">
+
+            <h3>➕ नया सामान जोड़ें</h3>
+
+            <input
+                id="newName"
+                class="add-input"
+                type="text"
+                placeholder="सामान का नाम"
+            >
+
+            <input
+                id="newPrice"
+                class="add-input"
+                type="number"
+                placeholder="कीमत ₹"
+            >
+
+            <button class="add-btn" onclick="addItem()">
+                + सामान जोड़ें
+            </button>
+
+        </div>
+
+
+        <!-- ADMIN SEARCH -->
+        <div class="admin-search">
+
+            <h3>🔎 सामान Search करें</h3>
+
+            <input
+                id="adminSearch"
+                class="search"
+                type="text"
+                placeholder="जैसे Masala"
+            >
+
+        </div>
+
+
+        <div id="adminResults"></div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<footer>
+
+    <b>HARSH KIRANA STORE</b><br><br>
+
+    📞 7535892891 &nbsp; | &nbsp;
+    💬 WhatsApp: 7535892891<br>
+
+    ✉️ HC1359843@GMAIL.COM
+
+</footer>
+
+
+<script>
+
+/* INITIAL PRODUCTS */
+
+const defaultItems = [
+
+    {id:1,name:"चावल",price:60,available:true},
+    {id:2,name:"दाल",price:120,available:true},
+    {id:3,name:"आटा",price:45,available:true},
+    {id:4,name:"चीनी",price:50,available:true},
+    {id:5,name:"नमक",price:25,available:true},
+    {id:6,name:"तेल",price:140,available:true},
+    {id:7,name:"मसाला",price:80,available:true},
+
+    {id:8,name:"चाय",price:120,available:true},
+    {id:9,name:"कॉफी",price:150,available:true},
+    {id:10,name:"बिस्किट",price:20,available:true},
+    {id:11,name:"नमकीन",price:30,available:true},
+    {id:12,name:"नूडल्स",price:40,available:true},
+
+    {id:13,name:"साबुन",price:35,available:true},
+    {id:14,name:"शैम्पू",price:10,available:true},
+    {id:15,name:"टूथपेस्ट",price:65,available:true},
+    {id:16,name:"हेयर ऑयल",price:80,available:true},
+    {id:17,name:"क्रीम",price:60,available:true},
+
+    {id:18,name:"डिटर्जेंट",price:80,available:true},
+    {id:19,name:"फिनाइल",price:90,available:true},
+    {id:20,name:"कपड़े धोने का साबुन",price:35,available:true},
+    {id:21,name:"माचिस",price:2,available:true},
+    {id:22,name:"स्टेशनरी",price:10,available:true}
+
+];
+
+
+/* SAVE DATA */
+
+let items =
+JSON.parse(localStorage.getItem("harshKiranaItems"))
+|| defaultItems;
+
+
+/* SAVE */
+
+function saveData(){
+
+    localStorage.setItem(
+        "harshKiranaItems",
+        JSON.stringify(items)
+    );
+
+}
+
+
+/* ESCAPE HTML */
+
+function escapeHTML(text){
+
+    return String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* CUSTOMER SEARCH */
+
+function customerSearch(){
+
+    const search =
+    document
+    .getElementById("customerSearch")
+    .value
+    .trim()
+    .toLowerCase();
+
+
+    const result =
+    document.getElementById("customerResults");
+
+
+    if(search === ""){
+
+        result.innerHTML = `
+        <p style="margin-top:15px;color:#68737d;">
+        किसी सामान का नाम Search करें।
+        </p>`;
+
+        return;
+
+    }
+
+
+    const found =
+    items.filter(item =>
+    item.name.toLowerCase().includes(search)
+    );
+
+
+    if(found.length === 0){
+
+        result.innerHTML = `
+        <div class="product">
+
+            <div>
+                <div class="product-name">
+                    सामान नहीं मिला
+                </div>
+
+                <div style="margin-top:5px;color:#68737d;">
+                    यह सामान अभी दुकान की सूची में नहीं है।
+                </div>
+            </div>
+
+            <span class="status unavailable">
+                उपलब्ध नहीं
+            </span>
+
+        </div>`;
+
+        return;
+
+    }
+
+
+    result.innerHTML =
+    found.map(item => `
+
+        <div class="product">
+
+            <div>
+
+                <div class="product-name">
+                    🛒 ${escapeHTML(item.name)}
+                </div>
+
+                <div class="price">
+                    ₹${Number(item.price).toFixed(2)}
+                </div>
+
+            </div>
+
+            <span class="status ${
+                item.available
+                ? "available"
+                : "unavailable"
+            }">
+
+                ${
+                    item.available
+                    ? "✓ उपलब्ध"
+                    : "✕ उपलब्ध नहीं"
+                }
+
+            </span>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+/* LOGIN */
+
+function login(){
+
+    const password =
+    document.getElementById("password").value;
+
+
+    if(password === "1234"){
+
+        document.getElementById("loginBox")
+        .style.display = "none";
+
+
+        document.getElementById("adminPanel")
+        .style.display = "block";
+
+
+        adminRender();
+
+    }
+
+    else{
+
+        alert("❌ गलत Password");
+
+    }
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+    document.getElementById("loginBox")
+    .style.display = "block";
+
+
+    document.getElementById("adminPanel")
+    .style.display = "none";
+
+
+    document.getElementById("password")
+    .value = "";
+
+}
+
+
+/* ADD ITEM */
+
+function addItem(){
+
+    const name =
+    document.getElementById("newName")
+    .value.trim();
+
+
+    const price =
+    Number(
+        document.getElementById("newPrice")
+        .value
+    );
+
+
+    if(!name){
+
+        alert("सामान का नाम डालें");
+
+        return;
+
+    }
+
+
+    if(!Number.isFinite(price) || price < 0){
+
+        alert("सही कीमत डालें");
+
+        return;
+
+    }
+
+
+    items.push({
+
+        id:Date.now(),
+
+        name:name,
+
+        price:price,
+
+        available:true
+
+    });
+
+
+    saveData();
+
+
+    document.getElementById("newName")
+    .value = "";
+
+
+    document.getElementById("newPrice")
+    .value = "";
+
+
+    adminRender();
+
+    customerSearch();
+
+}
+
+
+/* ADMIN SEARCH */
+
+function adminRender(){
+
+    const search =
+    document
+    .getElementById("adminSearch")
+    .value
+    .trim()
+    .toLowerCase();
+
+
+    const box =
+    document.getElementById("adminResults");
+
+
+    const found =
+    items.filter(item =>
+    item.name.toLowerCase().includes(search)
+    );
+
+
+    if(found.length === 0){
+
+        box.innerHTML = `
+        <p style="margin-top:15px;color:#68737d;">
+        सामान नहीं मिला।
+        </p>`;
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+    found.map(item => `
+
+        <div class="admin-item">
+
+            <div class="admin-top">
+
+                <div>
+
+                    <div class="product-name">
+                        ${escapeHTML(item.name)}
+                    </div>
+
+                    <div class="price">
+                        ₹${Number(item.price).toFixed(2)}
+                    </div>
+
+                </div>
+
+
+                <span class="status ${
+                    item.available
+                    ? "available"
+                    : "unavailable"
+                }">
+
+                    ${
+                        item.available
+                        ? "✓ उपलब्ध"
+                        : "✕ खत्म"
+                    }
+
+                </span>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    class="stock-btn"
+                    onclick="toggleStock(${item.id})">
+
+                    ${
+                        item.available
+                        ? "❌ सामान खत्म करें"
+                        : "✅ सामान उपलब्ध करें"
+                    }
+
+                </button>
+
+
+                <button
+                    class="price-btn"
+                    onclick="changePrice(${item.id})">
+
+                    ✏️ कीमत बदलें
+
+                </button>
+
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteItem(${item.id})">
+
+                    🗑️ Delete
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+/* CHANGE STOCK */
+
+function toggleStock(id){
+
+    const item =
+    items.find(x => x.id === id);
+
+
+    if(item){
+
+        item.available =
+        !item.available;
+
+
+        saveData();
+
+        adminRender();
+
+        customerSearch();
+
+    }
+
+}
+
+
+/* CHANGE PRICE */
+
+function changePrice(id){
+
+    const item =
+    items.find(x => x.id === id);
+
+
+    if(!item) return;
+
+
+    const newPrice =
+    prompt(
+        "नई कीमत डालें:",
+        item.price
+    );
+
+
+    if(
+        newPrice !== null &&
+        newPrice.trim() !== "" &&
+        Number(newPrice) >= 0
+    ){
+
+        item.price =
+        Number(newPrice);
+
+
+        saveData();
+
+        adminRender();
+
+        customerSearch();
+
+    }
+
+}
+
+
+/* DELETE */
+
+function deleteItem(id){
+
+    const confirmDelete =
+    confirm(
+        "क्या आप यह सामान Delete करना चाहते हैं?"
+    );
+
+
+    if(!confirmDelete) return;
+
+
+    items =
+    items.filter(
+        item => item.id !== id
+    );
+
+
+    saveData();
+
+    adminRender();
+
+    customerSearch();
+
+}
+
+
+/* EVENTS */
+
+document
+.getElementById("customerSearch")
+.addEventListener(
+    "input",
+    customerSearch
+);
+
+
+document
+.getElementById("adminSearch")
+.addEventListener(
+    "input",
+    adminRender
+);
+
+
+/* FIRST LOAD */
+
+customerSearch();
+
+</script>
+
+</body>
+</html>
